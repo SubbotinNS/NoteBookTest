@@ -30,11 +30,11 @@ class AuthController extends Controller
       return response()->json($user->createToken("API TOKEN")->plainTextToken,200);
     }
 
-    catch (\Throwable $th)
-    {
+      catch (\Throwable $th)
+      {
         return response()->json($th->getMessage(),500);
+      }
     }
-  }
 
   public function loginUser(Request $req)
   {
@@ -44,7 +44,7 @@ class AuthController extends Controller
        return response()->json($validateUser->errors(),401);
 
     if(!Auth::attempt($req->only(['email','password'])))
-        return response()->json($validateUser->errors(),401);
+        return response()->json('Incorrect Name, Email Or Password',401);
 
     $user= User::where('email',$req->email)->first();
       return response()->json($user->createToken("API TOKEN")->plainTextToken,200);

@@ -20,12 +20,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('v1')->group(function () {
-  Route::get('notebook',[NoteBookApiController::class,'notebook'])->middleware('auth:sanctum');;
-  Route::post('notebook',[NoteBookApiController::class,'notebookadd'])->middleware('auth:sanctum');;
-  Route::get('notebook/{id}',[NoteBookApiController::class,'notebookById'])->middleware('auth:sanctum');;
-  Route::post('notebook/{id}',[NoteBookApiController::class,'notebookaddById'])->middleware('auth:sanctum');;
-  Route::delete('notebook/{id}',[NoteBookApiController::class,'notebookdeleteById'])->middleware('auth:sanctum');;
+  Route::get('notebook',[NoteBookApiController::class,'notebook'])->middleware('auth:sanctum');
+  Route::post('notebook',[NoteBookApiController::class,'notebookadd'])->middleware('auth:sanctum');
+  Route::get('notebook/{id}',[NoteBookApiController::class,'notebookById'])->middleware('auth:sanctum');
+  Route::post('notebook/{id}',[NoteBookApiController::class,'notebookaddById'])->middleware('auth:sanctum');
+  Route::delete('notebook/{id}',[NoteBookApiController::class,'notebookdeleteById'])->middleware('auth:sanctum');
     });
 
-  Route::post('/auth/register',[AuthController::class,'createUser']);
-  Route::post('/auth/login',[AuthController::class,'loginUser']);
+Route::post('/auth/register',[AuthController::class,'createUser']);
+Route::post('/auth/login',[AuthController::class,'loginUser']);

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
 class NoteBookApiController extends Controller
-{
+  {
 
   public $valid_rules = [
     'full_name' => 'required',
@@ -20,8 +20,6 @@ class NoteBookApiController extends Controller
 
   public function notebook()
   {
-      //is_null($data=NoteBookModel::get())?$status=200:$status=204;                  //get() ноль вообще не вовзращает походу
-      //return response()->json($data=NoteBookModel::get(),is_null($data)?204:200);
       return response()->json(NoteBookModel::get(),200);
   }
 
@@ -36,7 +34,6 @@ class NoteBookApiController extends Controller
 
   public function notebookById($id)
   {
-    //$note=NoteBookModel::find($id);
     if(is_null($note=NoteBookModel::find($id)))
         return response()->json(['error'=>true,"message"=>'Note not found'], 404);
     else
@@ -61,7 +58,6 @@ class NoteBookApiController extends Controller
       $note->birth_date=$req->birth_date;
       $note->photo=$req->photo;
       $note->save();
-      //$note = NoteBookModel::create($req->all());                 Некорректно считывается id запроса??
       return response()->json($note,201);
     }
   }
