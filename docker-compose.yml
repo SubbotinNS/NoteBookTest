@@ -20,8 +20,10 @@ services:
     image: mysql:5.7
     container_name: notebooktest-db
     restart: unless-stopped
+    ports:
+      - 3306:3306
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_DATABASE: laravel_notebooktest
       #MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       #MYSQL_PASSWORD: ${DB_PASSWORD}
       #MYSQL_USER: ${DB_USERNAME}
